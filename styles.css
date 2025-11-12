@@ -99,21 +99,36 @@ body {
 
 /* فقاعة القلب */
 .heart-note {
+  /* نفس الشكل الهندسي */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
+  
   position: absolute;
   top: 18%;
   left: 12%;
   transform: translate(-10%, -10%);
+  
   background: #f3f6f8;
-  border: 1px solid #dde5ea;
-  border-radius: 10px;
-  padding: 18px 22px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  border: 0.2vw solid #dde5ea;       /* بدل 1px → نسبة للشاشة */
+  border-radius: 1vw;                /* بدل 10px */
+  padding: 1.5vw 2vw;                /* بدل 18px 22px */
+  
+  box-shadow: 0 0.6vw 1vw rgba(0, 0, 0, 0.15);
+  
+  /* حجم الفقاعة يتغير */
+  width: 16vw;                       /* بدل الحجم الثابت */
+  height: auto;
+  min-width: 25px;                  /* حد أدنى حتى ما تصغر أكثر من اللازم */
 }
+
+/* القلب داخل الفقاعة */
 .heart {
-  width: 80px;
-  height: 75px;
+  width: 6vw;                        /* بدل 80px */
+  height: 5vw;                     /* بدل 75px */
   display: inline-block;
+  min-width: 50px;                   /* حد أدنى */
+  min-height: 45px;
 }
+
 .heart img {
   width: 100%;
   height: 100%;
