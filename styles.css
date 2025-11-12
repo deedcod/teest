@@ -1,8 +1,8 @@
 :root {
   --bg: #ffffff;
-  --ink: #0b2130;      /* كحلي داكن */
+  --ink: #0b2130;
   --muted: #445a69;
-  --accent: #ff5630;   /* برتقالي */
+  --accent: #ff5630;
 }
 
 /* إعداد عام */
@@ -16,32 +16,20 @@ html, body {
   background: var(--bg);
   color: var(--ink);
   overflow-x: hidden;
-  overflow-y: hidden; /* يمنع التمرير العمودي */
+}
+img, svg {
+  max-width: 100%;
+  height: auto;
 }
 
-/* الحاوية الرئيسية — توسيط أفقي وعمودي */
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: scale(1);
-  transform-origin: top center;
-  width: 100%;
-  height: 100vh;
-}
-
-/* المحتوى */
+/* الحاوية الرئيسية */
 .wrap {
-  width: 1200px;
-  height: 90vh;
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   justify-content: center;
   gap: 50px;
-  background: var(--bg);
-  border-radius: 20px;
-  box-shadow: 0 0 50px rgba(0,0,0,0.08);
   padding: 60px;
 }
 
@@ -57,6 +45,8 @@ body {
   justify-content: center;
   overflow: hidden;
   width: 100%;
+  max-width: 600px;
+  margin: auto;
 }
 .bar {
   position: absolute;
@@ -97,42 +87,40 @@ body {
   margin: 6px 0 0;
 }
 
-/* فقاعة القلب */
+/* ✅ فقاعة القلب المتجاوبة */
 .heart-note {
-  /* نفس الشكل الهندسي */
   clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
-  
   position: absolute;
   top: 18%;
-  left: 12%;
+  left: 5%;
   transform: translate(-10%, -10%);
-  
   background: #f3f6f8;
-  border: 0.2vw solid #dde5ea;       /* بدل 1px → نسبة للشاشة */
-  border-radius: 1vw;                /* بدل 10px */
-  padding: 1.5vw 2vw;                /* بدل 18px 22px */
-  
-  box-shadow: 0 0.6vw 1vw rgba(0, 0, 0, 0.15);
-  
-  /* حجم الفقاعة يتغير */
-  width: 16vw;                       /* بدل الحجم الثابت */
-  height: auto;
-  min-width: 25px;                  /* حد أدنى حتى ما تصغر أكثر من اللازم */
+  border: 2px solid #dde5ea;
+  border-radius: 15px;
+  padding: 18px 22px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  width: 9vw;
+  min-width: 100px;
 }
-
-/* القلب داخل الفقاعة */
 .heart {
-  width: 6vw;                        /* بدل 80px */
-  height: 5vw;                     /* بدل 75px */
+  width: 6vw;
+  height: 4vw;
   display: inline-block;
-  min-width: 50px;                   /* حد أدنى */
-  min-height: 45px;
+  min-width: 25px;
+  animation: pulse 2s infinite ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(255, 86, 48, 0.5));
 }
-
 .heart img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+/* 💓 تأثير النبض */
+@keyframes pulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,86,48,0.3)); }
+  50% { transform: scale(1.15); filter: drop-shadow(0 0 15px rgba(255,86,48,0.7)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,86,48,0.3)); }
 }
 
 /* القسم الأيمن */
@@ -143,7 +131,7 @@ body {
 h1 {
   font-weight: 800;
   letter-spacing: 2px;
-  font-size: 48px;
+  font-size: clamp(28px, 4vw, 56px);
   margin-bottom: 28px;
 }
 
@@ -183,11 +171,12 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* الأيقونات السفلية */
+/* الأيقونات */
 .socials {
   display: flex;
   align-items: center;
   gap: 16px;
+  flex-wrap: wrap;
 }
 .ico {
   width: 44px;
@@ -198,25 +187,82 @@ h1 {
   border: 1.5px solid var(--ink);
   text-decoration: none;
 }
-.ico img, .ico svg {
+.ico svg, .ico img {
   width: 24px;
   height: 24px;
-  color: var(--ink);
 }
 
-/* 📱 الموبايل: تقليص تلقائي بدون تمرير */
-@media (max-width: 1024px) {
-  html {
-    zoom: 0.8;
+/* ✅ تجاوب حقيقي مع أغلب الهواتف */
+@media (max-width: 1200px) {
+  .wrap {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 40px;
+  }
+  .mock {
+    max-width: 500px;
   }
 }
+
+@media (max-width: 992px) {
+  .wrap {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .mock {
+    width: 80%;
+    margin-inline: auto;
+    aspect-ratio: auto;
+  }
+}
+
 @media (max-width: 768px) {
-  html {
-    zoom: 0.6;
+  .wrap {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+  .mock {
+    width: 100%;
+  }
+  .heart-note {
+    width: 8vw;
+    padding: 3vw;
+    top: 20%;
+  }
+  .heart {
+    width: 10vw;
+    height: 13vw;
+  }
+  h1 {
+    font-size: 1.7rem;
+  }
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
+
 @media (max-width: 480px) {
-  html {
-    zoom: 0.5;
+  .wrap {
+    padding: 15px;
+    gap: 25px;
+  }
+  .mock {
+    width: 100%;
+  }
+  .heart-note {
+    width: 30vw;
+    padding: 4vw;
+  }
+  .heart {
+    width: 14vw;
+    height: 13vw;
+  }
+  .btn {
+    font-size: 0.9rem;
+    padding: 12px 16px;
+  }
+  h1 {
+    font-size: 1.4rem;
   }
 }
