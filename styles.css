@@ -44,9 +44,10 @@ img, svg {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  width: 100%;
-  max-width: 600px;
+  width: 80%;
+  max-width: 450px;
   margin: auto;
+  transform: scale(0.9);
 }
 .bar {
   position: absolute;
@@ -187,10 +188,7 @@ h1 {
   border: 1.5px solid var(--ink);
   text-decoration: none;
 }
-.ico svg, .ico img {
-  width: 24px;
-  height: 24px;
-}
+
 
 /* ✅ تجاوب حقيقي مع أغلب الهواتف */
 @media (max-width: 1200px) {
