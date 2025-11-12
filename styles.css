@@ -188,7 +188,10 @@ h1 {
   border: 1.5px solid var(--ink);
   text-decoration: none;
 }
-
+/* .ico svg, .ico img {
+  width: 24px;
+  height: 24px;
+} */
 
 /* ✅ تجاوب حقيقي مع أغلب الهواتف */
 @media (max-width: 1200px) {
