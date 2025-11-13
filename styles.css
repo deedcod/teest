@@ -1,269 +1,132 @@
-:root {
-  --bg: #ffffff;
-  --ink: #0b2130;
-  --muted: #445a69;
-  --accent: #ff5630;
+body {
+    margin: 0;
+    padding: 0;
+    background: white;
+    font-family: Arial, sans-serif;
 }
 
-/* إعداد عام */
-* {
-  box-sizing: border-box;
-}
-html, body {
-  height: 100%;
-  margin: 0;
-  font-family: "Tajawal", sans-serif;
-  background: var(--bg);
-  color: var(--ink);
-  overflow-x: hidden;
-}
-img, svg {
-  max-width: 100%;
-  height: auto;
+.container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 80px auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
 }
 
-/* الحاوية الرئيسية */
-.wrap {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  justify-content: center;
-  gap: 50px;
-  padding: 60px;
-}
-
-/* اللوحة اليسرى */
-.mock {
-  position: relative;
-  background: var(--ink);
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(11, 33, 48, 0.25);
-  aspect-ratio: 1.1 / 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  width: 80%;
-  max-width: 450px;
-  margin: auto;
-  transform: scale(0.9);
-}
-.bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 44px;
-  background: var(--accent);
-}
-.dots {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  display: flex;
-  gap: 8px;
-}
-.dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #fff;
-  opacity: 0.9;
-}
-
-/* شعار Dream Media */
-.logo {
-  text-align: center;
-  color: #fff;
-}
-.logo svg {
-  width: 65%;
-  max-width: 400px;
-}
-.en-text, .ar-text {
-  color: #fff;
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin: 6px 0 0;
-}
-
-/* ✅ فقاعة القلب المتجاوبة */
-.heart-note {
-  clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 75%, 75% 100%, 50% 75%, 0% 75%);
-  position: absolute;
-  top: 18%;
-  left: 5%;
-  transform: translate(-10%, -10%);
-  background: #f3f6f8;
-  border: 2px solid #dde5ea;
-  border-radius: 15px;
-  padding: 18px 22px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-  width: 9vw;
-  min-width: 100px;
-}
-.heart {
-  width: 6vw;
-  height: 4vw;
-  display: inline-block;
-  min-width: 25px;
-  animation: pulse 2s infinite ease-in-out;
-  filter: drop-shadow(0 0 10px rgba(255, 86, 48, 0.5));
-}
-.heart img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-/* 💓 تأثير النبض */
-@keyframes pulse {
-  0% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,86,48,0.3)); }
-  50% { transform: scale(1.15); filter: drop-shadow(0 0 15px rgba(255,86,48,0.7)); }
-  100% { transform: scale(1); filter: drop-shadow(0 0 5px rgba(255,86,48,0.3)); }
-}
-
-/* القسم الأيمن */
-.side {
-  max-width: 600px;
-  margin: auto;
-}
-h1 {
-  font-weight: 800;
-  letter-spacing: 2px;
-  font-size: clamp(28px, 4vw, 56px);
-  margin-bottom: 28px;
-}
-
-/* الأزرار */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px 18px;
-  margin-bottom: 22px;
-}
-.btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1.5px solid var(--ink);
-  background: #fff;
-  color: var(--ink);
-  border-radius: 999px;
-  padding: 18px 22px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: 0.2s;
-}
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(11, 33, 48, 0.12);
-}
-.btn:active {
-  transform: translateY(0);
-  box-shadow: none;
-}
-
-/* الملاحظات */
-.hint {
-  color: var(--muted);
-  font-size: 0.95rem;
-  margin-bottom: 20px;
-}
-
-/* الأيقونات */
-.socials {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-.ico {
-  width: 44px;
-  height: 44px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  border: 1.5px solid var(--ink);
-  text-decoration: none;
-}
-/* .ico svg, .ico img {
-  width: 24px;
-  height: 24px;
-} */
-
-/* ✅ تجاوب حقيقي مع أغلب الهواتف */
-@media (max-width: 1200px) {
-  .wrap {
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    padding: 40px;
-  }
-  .mock {
-    max-width: 500px;
-  }
-}
-
-@media (max-width: 992px) {
-  .wrap {
-    grid-template-columns: 1fr;
+/* LEFT SIDE */
+.left {
+    width: 40%;
     text-align: center;
-    padding: 40px 20px;
-  }
-  .mock {
-    width: 80%;
-    margin-inline: auto;
-    aspect-ratio: auto;
-  }
 }
 
-@media (max-width: 768px) {
-  .wrap {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-  .mock {
+.left .logo {
+    width: 260px;
+    display: block;
+    margin: 0 auto;
+}
+
+.brand-en {
+    color: #002b5c;
+    font-size: 30px;
+    margin-top: 10px;
+}
+
+.brand-ar {
+    color: #002b5c;
+    font-size: 28px;
+    margin-top: -10px;
+}
+
+/* RIGHT SIDE */
+.right {
+    width: 45%;
+}
+
+.grid-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    background: #002b5c;
+    color: white;
+    padding: 14px 0;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* DIVIDER LINE */
+.divider {
     width: 100%;
-  }
-  .heart-note {
-    width: 8vw;
-    padding: 3vw;
-    top: 20%;
-  }
-  .heart {
-    width: 10vw;
-    height: 13vw;
-  }
-  h1 {
-    font-size: 1.7rem;
-  }
-  .grid {
-    grid-template-columns: 1fr;
-  }
+    height: 2px;
+    background: #002b5c;
+    margin: 25px 0;
 }
 
-@media (max-width: 480px) {
-  .wrap {
-    padding: 15px;
+/* ICONS */
+.social-icons {
+    display: flex;
     gap: 25px;
-  }
-  .mock {
-    width: 100%;
-  }
-  .heart-note {
-    width: 30vw;
-    padding: 4vw;
-  }
-  .heart {
-    width: 14vw;
-    height: 13vw;
-  }
-  .btn {
-    font-size: 0.9rem;
-    padding: 12px 16px;
-  }
-  h1 {
-    font-size: 1.4rem;
-  }
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.social-icons img {
+    width: 32px;
+    transition: 0.2s;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* RESPONSIVE MODE (KEEP LAPTOP LAYOUT) */
+@media (max-width: 900px) {
+
+    .container {
+        flex-direction: row;   /* يبقى مثل اللابتوب */
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .left,
+    .right {
+        width: 50%; /* يبقى التقسيم نص ونص */
+    }
+
+    .left .logo {
+        width: 180px; /* تصغير بسيط للهواتف */
+    }
+
+    .brand-en {
+        font-size: 22px;
+    }
+
+    .brand-ar {
+        font-size: 20px;
+    }
+
+    .btn {
+        padding: 10px 0;
+        font-size: 14px;
+    }
+
+    .grid-buttons {
+        gap: 10px;
+    }
+
+    .social-icons img {
+        width: 26px;
+    }
 }
